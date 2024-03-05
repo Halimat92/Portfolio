@@ -55,6 +55,10 @@ FROM April;
 SELECT *
 FROM merge_table;
 
+SELECT DISTINCT ride_length
+FROM merge_table;
+
+
 --- Maximum ride length vs membership 
 SELECT  MAX(ride_length) AS Lowest_rider, membership_status
 FROM merge_table
@@ -71,21 +75,32 @@ FROM merge_table
 GROUP BY  membership_status, day_of_week;
 
 
-SELECT avg(ride_length)  AS AVG_rider
-FROM merge_table;
+-- Day rider ride the lowest
+SELECT membership_status, MIN(day_of_week)  AS AVG_day_ride
+FROM merge_table
 GROUP BY  membership_status;
 
-SELECT DISTINCT ride_length
-FROM merge_table;
+
+--- Day rider ride the highest
+SELECT membership_status, MAX(day_of_week)  AS AVG_day_ride
+FROM merge_table
+GROUP BY  membership_status;
+
+-- Day rider ride on average
+SELECT membership_status, AVG(day_of_week)  AS AVG_day_ride
+FROM merge_table
+GROUP BY  membership_status;
+
+
 
 SELECT DISTINCT ride_length, membership_status
 FROM merge_table;
 
-SELECT DISTINCT ride_id
+SELECT DISTINCT ride_id AS ride_id_for_members
 FROM merge_table
 where membership_status = 'member';
 
-SELECT DISTINCT ride_id
+SELECT DISTINCT ride_id AS ride_id_for_casual_members
 FROM merge_table
 where membership_status = 'casual';
   
