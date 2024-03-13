@@ -1,4 +1,5 @@
 use cyclistic;
+
 SELECT * FROM january;
 SELECT * FROM february feb;
 SELECT * FROM march mar;
@@ -104,13 +105,6 @@ SELECT DISTINCT ride_id AS ride_id_for_casual_members
 FROM merge_table
 where membership_status = 'casual';
   
-
-
-
-
-
-
-
 
 
  select time_to_seconds
